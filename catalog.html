@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LibraConnect – Catalog</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <div id="menu"></div>
+
+    <!-- HEADER -->
+    <div id="header"></div>
+
+    <!-- MAIN CONTENT -->
+    <div class="container my-5">
+
+        <h2 class="text-center mb-4">Book Catalog</h2>
+
+        <!-- Search Input -->
+        <input 
+            type="text" 
+            id="searchInput" 
+            class="form-control mb-4" 
+            placeholder="Search book by title..."
+        />
+
+        <!-- Cards Container -->
+        <div class="row g-4" id="catalogBooks"></div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div id="footer"></div>
+
+
+    <!-- Load shared components -->
+    <script>
+        fetch("includes/menu.html")
+            .then(res => res.text())
+            .then(data => document.getElementById("menu").innerHTML = data);
+
+        fetch("includes/header.html")
+            .then(res => res.text())
+            .then(data => document.getElementById("header").innerHTML = data);
+
+        fetch("includes/footer.html")
+            .then(res => res.text())
+            .then(data => document.getElementById("footer").innerHTML = data);
+    </script>
+
+    <!-- Catalog Logic -->
+    <script src="assets/js/catalog.js"></script>
+
+</body>
+</html>
+
