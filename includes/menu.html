@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container">
         <a class="navbar-brand" href="index.html">LibraConnect</a>
@@ -30,3 +31,33 @@
         </div>
     </div>
 </nav>
+=======
+<nav class="menu">
+    <div class="menu-container">
+
+        <a href="index.html" class="menu-logo">LibraConnect</a>
+
+        <!-- Mobile Menu Button -->
+        <button class="menu-toggle" id="menuToggle">☰</button>
+
+        <!-- Links -->
+        <ul class="menu-links" id="menuLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="catalog.html">Catalog</a></li>
+            <li><a href="register.html">Register</a></li>
+            <li><a href="borrow.html">Borrow</a></li>
+            <li><a href="history.html">History</a></li>
+        </ul>
+
+    </div>
+</nav>
+
+<script>
+    const toggle = document.getElementById("menuToggle");
+    const links = document.getElementById("menuLinks");
+
+    toggle.addEventListener("click", () => {
+        links.classList.toggle("show");
+    });
+</script>
+>>>>>>> 79fcb4807b14d4d5a1af952b06b32efc415fd14b

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LibraConnect – Home</title>
+
+    <!-- Your custom CSS -->
+    <link rel="stylesheet" href="\assests\css\home.css">
+    <link rel="stylesheet" href="\assests\css\includes.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <div id="menu"></div>
+
+    <!-- HEADER -->
+    <div id="header"></div>
+
+    <!-- MAIN CONTENT -->
+    <div class="container">
+        <h2 class="title">Featured Books</h2>
+        <div id="featuredBooks" class="book-grid"></div>
+    </div>
+
+    <!-- FOOTER -->
+    <div id="footer"></div>
+
+    <!-- Load shared components -->
+    <script>
+        fetch("includes/menu.html")
+            .then(res => res.text())
+            .then(data => document.getElementById("menu").innerHTML = data);
+
+        fetch("includes/header.html")
+            .then(res => res.text())
+            .then(data => document.getElementById("header").innerHTML = data);
+
+        fetch("includes/footer.html")
+            .then(res => res.text())
+            .then(data => document.getElementById("footer").innerHTML = data);
+    </script>
+
+    <!-- Home page JS -->
+    <script src="assets/js/home.js"></script>
+
+</body>
+</html>
