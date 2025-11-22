@@ -6,8 +6,28 @@
     <title>LibraConnect – Catalog</title>
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/catalog.css">
-    <link rel="stylesheet" href="\assests\css\includes.css">
+    <link rel="stylesheet" href="assests/css/catalog.css">
+    <link rel="stylesheet" href="assests/css/includes.css">
+
+    <style>
+        /* Fade-in animation for cards */
+        .fade-in {
+            animation: fade 0.3s ease-in;
+        }
+
+        @keyframes fade {
+            from { opacity: 0; transform: translateY(6px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Optional styling for no results message */
+        #noResults {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 18px;
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -28,17 +48,19 @@
             type="text" 
             id="searchInput"
             class="search-input"
-            placeholder="Search book by title..."
+            placeholder="Search by title, author, or genre..."
         />
 
         <!-- Books Grid -->
         <div id="catalogBooks" class="catalog-grid"></div>
 
+        <!-- No results message -->
+        <p id="noResults">No books found.</p>
+
     </div>
 
     <!-- FOOTER -->
     <div id="footer"></div>
-
 
     <!-- Load Shared Components -->
     <script>
@@ -56,9 +78,78 @@
     </script>
 
     <!-- Catalog Logic -->
-    <script src="assets/js/catalog.js"></script>
+    <script>
+        function initCatalog() {
+            // BOOKS ARRAY
+            const books = [
+                { title: "The secret history", author: "Lina Al-Farsi", genre: "Mystery", img: "assests/images/thesecrethistory.webp", description: "A gripping mystery that unfolds inside an abandoned library." },
+                { title: "the secret garden", author: "Omar El-Madani", genre: "Fantasy", img: "assests\images\the secretgarden.webp", description: "A fantasy adventure where stories come alive from the book itself." },
+                { title: "if we were villaness", author: "Sara Al-Taher", genre: "Drama", img: "assests/images/ifwewerevillans.webp", description: "A dramatic tale of love and loss set in the Sahara." },
+                { title: "bunny", author: "Nour Al-Sadiq", genre: "Romance", img: "assests/images/bunny.webp", description: "A bittersweet romance blooming under the Libyan night sky." },
+            
+            ];
+
+            const container = document.getElementById("catalogBooks");
+            const searchInput = document.getElementById("searchInput");
+
+            // RENDER BOOKS
+            function renderBooks() {
+                container.innerHTML = "";
+                books.forEach(book => {
+                    container.innerHTML += `
+                        <div class="book-card fade-in" data-title="${book.title.toLowerCase()}" data-author="${book.author.toLowerCase()}" data-genre="${book.genre.toLowerCase()}">
+                            <div class="card p-3 shadow-sm h-100 w-100">
+                                <img src="${book.img}" class="book-cover mb-3" alt="${book.title}">
+                                <h4>${book.title}</h4>
+                                <p class="text-muted mb-1"><strong>Author:</strong> ${book.author}</p>
+                                <p class="mb-1"><strong>Genre:</strong> ${book.genre}</p>
+                                <p class="book-description">${book.description}</p>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+
+            renderBooks();
+
+            // DEBOUNCE FUNCTION
+            function debounce(func, delay) {
+                let timer;
+                return function () {
+                    clearTimeout(timer);
+                    timer = setTimeout(func, delay);
+                };
+            }
+
+            // LIVE SEARCH
+            function runSearch() {
+                const text = searchInput.value.toLowerCase();
+                let visibleCount = 0;
+
+                document.querySelectorAll(".book-card").forEach(card => {
+                    const title = card.dataset.title;
+                    const author = card.dataset.author;
+                    const genre = card.dataset.genre;
+
+                    const match = title.includes(text) || author.includes(text) || genre.includes(text);
+
+                    if(match) {
+                        card.style.display = "block";
+                        visibleCount++;
+                    } else {
+                        card.style.display = "none";
+                    }
+                });
+
+                document.getElementById("noResults").style.display = visibleCount === 0 ? "block" : "none";
+            }
+
+            searchInput.addEventListener("keyup", debounce(runSearch, 200));
+        }
+
+        // Initialize catalog after DOM is ready
+        document.addEventListener("DOMContentLoaded", initCatalog);
+    </script>
 
 </body>
 </html>
-
-

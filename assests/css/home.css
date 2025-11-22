@@ -1,70 +1,171 @@
-/* Page container */
-.container {
-    width: 90%;
-    max-width: 1100px;
-    margin: 40px auto;
-}
-
-/* Page Title */
-.title {
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-/* Grid */
-.book-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 20px;
-}
-
-/* Book card */
-.book-card {
-    background: #fff;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    text-align: center;
-}
-
-/* Images */
-.book-img {
+/* --- HERO SECTION --- */
+.hero {
+    position: relative;
     width: 100%;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 8px;
+    height: 60vh;
+    background: linear-gradient(135deg, #0b0c1c, #1a1c2c);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-align: center;
+    overflow: hidden;
 }
 
-/* Text */
-.book-title {
-    margin-top: 15px;
-    font-size: 20px;
-    font-weight: bold;
-}
-
-.book-author {
-    color: #777;
+.hero-overlay h1 {
+    font-size: 3rem;
     margin-bottom: 10px;
+    color: #fffbf2;
+    text-shadow: 0 0 12px #0ff, 0 0 18px #0ff;
 }
 
-.book-desc {
-    margin: 10px 0;
-    color: #444;
+.hero-overlay p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #c0fefe;
+    text-shadow: 0 0 8px #0ff;
 }
 
-/* Button */
-.read-btn {
-    padding: 8px 14px;
-    border: none;
-    background: #0077cc;
-    color: white;
-    cursor: pointer;
-    border-radius: 6px;
+.hero-button {
+    padding: 12px 28px;
+    background: #0ff;
+    color: #1a1a1a;
+    font-weight: bold;
+    border-radius: 25px;
+    text-decoration: none;
     transition: 0.3s;
 }
 
-.read-btn:hover {
-    background: #005fa3;
+.hero-button:hover {
+    background: #0cc;
+    color: #fff;
 }
+
+/* Dark Mode Toggle */
+.dark-mode-toggle {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 1.5rem;
+    background: transparent;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.dark-mode-toggle:hover {
+    transform: scale(1.2);
+}
+
+/* --- CONTAINER & GRID --- */
+.container {
+    width: 90%;
+    margin: 40px auto;
+}
+
+.title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    color: #e0e0e0;
+    letter-spacing: 1px;
+    text-align: left;
+}
+
+.book-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 25px;
+}
+
+/* --- BOOK CARD --- */
+.book-card {
+    position: relative;
+    background: #1b1b2f;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+.book-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.6);
+}
+
+.book-card img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    display: block;
+}
+
+.genre-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #0ff;
+    color: #1a1a1a;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    opacity: 0.9;
+}
+
+.book-title {
+    font-size: 17px;
+    padding: 12px;
+    text-align: center;
+    font-weight: 600;
+    color: #fff;
+    background: #2a2a3c;
+}
+
+/* HOVER INFO */
+.book-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+
+    background: rgba(0, 0, 0, 0.85);
+    color: #fff;
+
+    transition: height 0.35s ease;
+    padding: 0 12px;
+}
+
+.book-card:hover .book-info {
+    height: 55%;
+    padding-top: 15px;
+}
+
+.book-info p {
+    font-size: 14px;
+    margin: 3px 0;
+    opacity: 0.9;
+}
+
+/* --- DARK MODE STYLING --- */
+body.dark-mode {
+    background: #0a0a14;
+    color: #e0e0e0;
+}
+
+body.dark-mode .hero {
+    background: linear-gradient(135deg, #05050d, #0f0f1f);
+}
+
+body.dark-mode .book-card {
+    background: #11112a;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+body.dark-mode .book-title {
+    background: #1c1c33;
+}
+
