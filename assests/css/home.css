@@ -1,171 +1,163 @@
-/* --- HERO SECTION --- */
+/* --- GLOBAL RESETS & TYPOGRAPHY --- */
+body {
+    background-color: #f8f9fa; /* Very light gray/off-white background */
+    font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif; /* Clean, modern font */
+    color: #333; /* Dark gray text */
+    margin: 0;
+    padding: 0;
+}
+
+/* ------------------------------------------- */
+/* --- HERO SECTION (Fixes Excessive Height) --- */
+/* ------------------------------------------- */
+
 .hero {
     position: relative;
     width: 100%;
-    height: 60vh;
-    background: linear-gradient(135deg, #0b0c1c, #1a1c2c);
+    /* FIX: Changed height from 60vh to fixed padding for less space */
+    height: auto; 
+    padding: 50px 20px; /* Generous padding, but much less than 60vh */
+    
+    /* Simplified background to match the white/light gray look */
+    background: white; /* Changed from linear-gradient to plain white */
+    
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #fff;
     text-align: center;
     overflow: hidden;
+    border-bottom: 1px solid #eee; /* Subtle separator line */
+}
+
+.hero-overlay {
+    max-width: 920px;
+    padding: 0 20px;
 }
 
 .hero-overlay h1 {
-    font-size: 3rem;
-    margin-bottom: 10px;
-    color: #fffbf2;
-    text-shadow: 0 0 12px #0ff, 0 0 18px #0ff;
+    /* Large, clean title */
+    font-size: 2.5em; /* Reduced from 3rem */
+    font-weight: 700;
+    margin-bottom: 20px; /* Increased margin for separation */
+    color: #343a40; /* Darker text for contrast */
 }
 
+/* HIDING paragraph element as it's not present in the target image */
 .hero-overlay p {
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-    color: #c0fefe;
-    text-shadow: 0 0 8px #0ff;
+    display: none; 
 }
 
 .hero-button {
-    padding: 12px 28px;
-    background: #0ff;
-    color: #1a1a1a;
-    font-weight: bold;
-    border-radius: 25px;
+    /* Style the 'Explore Catalog' button */
+    padding: 12px 30px; /* Adjusted padding to match previous suggestion */
+    background: #007bff; /* Bright blue color */
+    color: #fff;
+    font-weight: 600; /* Adjusted font weight */
+    border-radius: 5px; /* Adjusted to less rounded for a cleaner look */
     text-decoration: none;
-    transition: 0.3s;
+    transition: background 0.25s ease, transform 0.15s ease, box-shadow 0.25s ease;
+    display: inline-block;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Added subtle shadow */
 }
 
 .hero-button:hover {
-    background: #0cc;
-    color: #fff;
+    background: #0056b3; /* Darker blue on hover */
+    transform: translateY(0); /* Removed translateY lift */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
 
-/* Dark Mode Toggle */
-.dark-mode-toggle {
-    position: absolute;
-    top: 20px;
-    right: 25px;
-    font-size: 1.5rem;
-    background: transparent;
-    border: none;
-    color: #fff;
-    cursor: pointer;
-    transition: transform 0.3s;
-}
-
-.dark-mode-toggle:hover {
-    transform: scale(1.2);
-}
-
+/* ------------------------------------------- */
 /* --- CONTAINER & GRID --- */
+/* ------------------------------------------- */
+
 .container {
-    width: 90%;
+    max-width: 1200px; /* Wider container for more books in a row */
     margin: 40px auto;
+    padding: 0 20px;
+    box-sizing: border-box;
 }
 
 .title {
-    font-size: 28px;
-    font-weight: 700;
+    font-size: 1.8em; /* Reduced for less dominance */
+    font-weight: 600;
     margin-bottom: 25px;
-    color: #e0e0e0;
-    letter-spacing: 1px;
+    color: #343a40;
+    letter-spacing: normal;
     text-align: left;
 }
 
 .book-grid {
+    /* Simplified grid to enforce 4 columns for a cleaner look */
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 30px; /* Slightly wider gap */
+    padding-bottom: 40px;
 }
 
-/* --- BOOK CARD --- */
+/* ------------------------------------------- */
+/* --- BOOK CARD (Simplified to match target image) --- */
+/* ------------------------------------------- */
+
 .book-card {
     position: relative;
-    background: #1b1b2f;
-    border-radius: 12px;
-    overflow: hidden;
+    /* Removed background/box-shadow/overflow to keep it minimal like the target image */
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
     cursor: pointer;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    text-align: center;
+    transition: transform 0.2s ease;
+    display: block;
+    flex-direction: initial; /* Resetting flex properties */
 }
 
 .book-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 8px 18px rgba(0,0,0,0.6);
+    transform: translateY(-5px); /* Subtle lift on hover */
+    box-shadow: none;
 }
 
 .book-card img {
+    /* Ensures the cover is the dominant element, height based on aspect ratio */
     width: 100%;
-    height: 230px;
+    height: auto;
     object-fit: cover;
     display: block;
+    border-radius: 4px; /* Slight rounding on image */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow only on the image */
 }
 
+/* Genre badge */
 .genre-badge {
     position: absolute;
     top: 10px;
     left: 10px;
-    background: #0ff;
-    color: #1a1a1a;
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-size: 12px;
-    opacity: 0.9;
+    background: #ffc107;
+    color: #343a40;
+    padding: 3px 8px; /* Adjusted padding/radius for smaller look */
+    border-radius: 3px;
+    font-size: 0.75em;
+    font-weight: 700;
+    opacity: 1;
+    text-transform: uppercase;
 }
 
+/* Title area */
 .book-title {
-    font-size: 17px;
-    padding: 12px;
+    /* Style for the text link below the cover */
+    display: block;
+    margin-top: 10px;
+    padding: 0;
+    font-size: 1em;
+    font-weight: 500;
+    color: #007bff; /* Blue for links */
     text-align: center;
-    font-weight: 600;
-    color: #fff;
-    background: #2a2a3c;
+    background: transparent; /* Removed background */
 }
 
-/* HOVER INFO */
-.book-info {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 0;
-    overflow: hidden;
-
-    background: rgba(0, 0, 0, 0.85);
-    color: #fff;
-
-    transition: height 0.35s ease;
-    padding: 0 12px;
+/* HIDING/REMOVING HOVER INFO */
+/* These rules are removed entirely to eliminate the complex hover overlay */
+.book-info,
+.book-card:hover .book-info,
+.book-card .content-wrapper {
+    display: none; 
 }
-
-.book-card:hover .book-info {
-    height: 55%;
-    padding-top: 15px;
-}
-
-.book-info p {
-    font-size: 14px;
-    margin: 3px 0;
-    opacity: 0.9;
-}
-
-/* --- DARK MODE STYLING --- */
-body.dark-mode {
-    background: #0a0a14;
-    color: #e0e0e0;
-}
-
-body.dark-mode .hero {
-    background: linear-gradient(135deg, #05050d, #0f0f1f);
-}
-
-body.dark-mode .book-card {
-    background: #11112a;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-}
-
-body.dark-mode .book-title {
-    background: #1c1c33;
-}
-
