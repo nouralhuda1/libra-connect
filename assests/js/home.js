@@ -10,7 +10,21 @@ const books = [
         title: "The Secret Garden",
         author: "Frances Hodgson Burnett",
         genre: "Fantasy",
-        img: "assests/images/thesecretgarden.webp",
+        img: "assests/images/the secretgarden.webp",
+        description: "A young orphaned girl discovers a hidden garden and, with newfound friends, brings it back to life. A tale of growth, healing, and the magic of nature."
+    },
+    { 
+        title: "All the Lovers in the Night",
+        author: "Frances Hodgson Burnett",
+        genre: "Fantasy",
+        img: "assests/images/all the lovers in the night.webp",
+        description: "A young orphaned girl discovers a hidden garden and, with newfound friends, brings it back to life. A tale of growth, healing, and the magic of nature."
+    },
+    { 
+        title: "The catcher in the Rye",
+        author: "Frances Hodgson Burnett",
+        genre: "Fantasy",
+        img: "assests/images/the catcher in the rye.webp",
         description: "A young orphaned girl discovers a hidden garden and, with newfound friends, brings it back to life. A tale of growth, healing, and the magic of nature."
     },
     { 
@@ -24,14 +38,14 @@ const books = [
         title: "A Little Life",
         author: "Hanya Yanagihara",
         genre: "Drama",
-        img: "assests/images/a_little_life.webp",
+        img: "assests/images/a little life.webp",
         description: "A profound and heart-wrenching story of friendship, trauma, and the enduring power of love, following four friends living in New York City."
     },
     { 
         title: "A Thousand Splendid Suns",
         author: "Khaled Hosseini",
         genre: "Historical Fiction",
-        img: "assests/images/a_thousand_splendid_suns.webp",
+        img: "assests/images/a thousand splendid suns.webp",
         description: "The story of two Afghan women brought together by war and fate. A moving exploration of love, sacrifice, and resilience under oppression."
     },
     { 
@@ -52,21 +66,21 @@ const books = [
         title: "The Bell Jar",
         author: "Sylvia Plath",
         genre: "Classic",
-        img: "assests/images/the_bell_jar.webp",
+        img: "assests/images/the bell jar.webp",
         description: "A semi-autobiographical novel exploring a young woman's mental health struggles in 1950s America. Themes of identity, depression, and societal expectations are central."
     },
     { 
         title: "The Picture of Dorian Gray",
         author: "Oscar Wilde",
         genre: "Classic",
-        img: "assests/images/the_picture_of_dorian_gray.webp",
+        img: "assests/images/the picture of dorian gray.webp",
         description: "A cautionary tale about vanity, moral corruption, and the pursuit of pleasure, following a young man whose portrait ages while he remains youthful."
     },
     { 
         title: "To Kill a Mockingbird",
         author: "Harper Lee",
         genre: "Classic",
-        img: "assests/images/to_kill_a_mockingbird.webp",
+        img: "assests/images/to kill a mockingbird.webp",
         description: "A powerful story addressing racial injustice and moral growth through the eyes of Scout Finch in 1930s Alabama. Themes of empathy and integrity prevail."
     },
 ];

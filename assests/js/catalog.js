@@ -13,7 +13,7 @@ const books = [
         title: "The Secret Garden",
         author: "Frances Hodgson Burnett",
         genre: "Fantasy",
-        img: "assests/images/thesecretgarden.webp",
+        img: "assests/images/the secretgarden.webp",
         description: "A fantasy adventure where stories come alive from the book itself."
     },
     { 
@@ -33,14 +33,6 @@ const books = [
         description: "A surreal satire blooming under the pressure of academic writing."
     },
     { 
-        id: "978-0141439518",
-        title: "Pride and Prejudice", 
-        author: "Jane Austen", 
-        genre: "Romance", 
-        img: "assests/images/prideandprejudice.webp", 
-        description: "A classic novel exploring societal norms and love in 19th-century England." 
-    },
-    { 
         id: "978-0451524935",
         title: "1984", 
         author: "George Orwell", 
@@ -53,7 +45,7 @@ const books = [
         title: "A Little Life",
         author: "Hanya Yanagihara",
         genre: "Drama",
-        img: "assests/images/a_little_life.webp",
+        img: "assests/images/a little life.webp",
         description: "A heart-wrenching story of friendship, trauma, and the enduring power of love."
     },
     { 
@@ -61,7 +53,7 @@ const books = [
         title: "A Thousand Splendid Suns",
         author: "Khaled Hosseini",
         genre: "Historical Fiction",
-        img: "assests/images/a_thousand_splendid_suns.webp",
+        img: "assests/images/a thousand splendid suns.webp",
         description: "The story of two Afghan women bound together by war and fate, exploring love, sacrifice, and resilience."
     },
     { 
@@ -69,7 +61,7 @@ const books = [
         title: "The Bell Jar",
         author: "Sylvia Plath",
         genre: "Classic",
-        img: "assests/images/the_bell_jar.webp",
+        img: "assests/images/the bell jar.webp",
         description: "A semi-autobiographical novel exploring a young woman's mental health struggles in 1950s America."
     },
     { 
@@ -77,7 +69,7 @@ const books = [
         title: "The Picture of Dorian Gray",
         author: "Oscar Wilde",
         genre: "Classic",
-        img: "assests/images/the_picture_of_dorian_gray.webp",
+        img: "assests/images/the picture of dorian gray.webp",
         description: "A cautionary tale about vanity, moral corruption, and the pursuit of pleasure."
     },
     { 
@@ -85,10 +77,28 @@ const books = [
         title: "To Kill a Mockingbird",
         author: "Harper Lee",
         genre: "Classic",
-        img: "assests/images/to_kill_a_mockingbird.webp",
+        img: "assests/images/to kill a mockingbird.webp",
         description: "A story addressing racial injustice and moral growth through the eyes of Scout Finch in 1930s Alabama."
+    },
+    // ✅ Added new books
+    { 
+        id: "978-0143039583",
+        title: "All the Lovers in the Night",
+        author: "Mieko Kawakami",
+        genre: "Fantasy",
+        img: "assests/images/all the lovers in the night.webp",
+        description: "A young orphaned girl discovers a hidden garden and, with newfound friends, brings it back to life. A tale of growth, healing, and the magic of nature."
+    },
+    { 
+        id: "978-0316769488",
+        title: "The Catcher in the Rye",
+        author: "J.D. Salinger",
+        genre: "Classic",
+        img: "assests/images/the catcher in the rye.webp",
+        description: "A story following Holden Caulfield, a teenager navigating the challenges of adolescence and alienation in 1950s New York."
     }
 ];
+
 
 // DOM ELEMENTS
 const container = document.getElementById("catalogBooks");
