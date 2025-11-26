@@ -48,6 +48,46 @@ const books = [
         img: "assests/images/1984.webp", 
         description: "A chilling look at a future totalitarian state and surveillance society." 
     },
+    { 
+        id: "978-0316055447",
+        title: "A Little Life",
+        author: "Hanya Yanagihara",
+        genre: "Drama",
+        img: "assests/images/a_little_life.webp",
+        description: "A heart-wrenching story of friendship, trauma, and the enduring power of love."
+    },
+    { 
+        id: "978-1594631931",
+        title: "A Thousand Splendid Suns",
+        author: "Khaled Hosseini",
+        genre: "Historical Fiction",
+        img: "assests/images/a_thousand_splendid_suns.webp",
+        description: "The story of two Afghan women bound together by war and fate, exploring love, sacrifice, and resilience."
+    },
+    { 
+        id: "978-0140237504",
+        title: "The Bell Jar",
+        author: "Sylvia Plath",
+        genre: "Classic",
+        img: "assests/images/the_bell_jar.webp",
+        description: "A semi-autobiographical novel exploring a young woman's mental health struggles in 1950s America."
+    },
+    { 
+        id: "978-0141439570",
+        title: "The Picture of Dorian Gray",
+        author: "Oscar Wilde",
+        genre: "Classic",
+        img: "assests/images/the_picture_of_dorian_gray.webp",
+        description: "A cautionary tale about vanity, moral corruption, and the pursuit of pleasure."
+    },
+    { 
+        id: "978-0061120084",
+        title: "To Kill a Mockingbird",
+        author: "Harper Lee",
+        genre: "Classic",
+        img: "assests/images/to_kill_a_mockingbird.webp",
+        description: "A story addressing racial injustice and moral growth through the eyes of Scout Finch in 1930s Alabama."
+    }
 ];
 
 // DOM ELEMENTS
@@ -79,7 +119,7 @@ function renderBooks() {
                         
                         <p class="card-text text-muted mb-3"><strong>Author:</strong> ${book.author}</p>
                         
-                        <a href="details.html?id=${book.id}" class="btn btn-primary mt-auto">View Details & Borrow</a>
+                        <a href="details.html?id=${book.id}" class="btn btn-primary mt-auto">Borrow</a>
                     </div>
                 </div>
             </div>
@@ -105,8 +145,7 @@ function debounce(func, delay) {
     };
 }
 
-
-// LIVE SEARCH/FILTER FUNCTION (Student 2 Task)
+// LIVE SEARCH/FILTER FUNCTION
 function runSearch() {
     const text = searchInput.value.toLowerCase();
     let visibleCount = 0;
@@ -122,7 +161,6 @@ function runSearch() {
             genre.includes(text);
 
         if (match) {
-            // Displaying the column container
             card.style.display = "block"; 
             visibleCount++;
         } else {
@@ -131,13 +169,11 @@ function runSearch() {
     });
 
     // Show/Hide "No Results"
-    noResults.style.display =
-        visibleCount === 0 ? "block" : "none";
+    noResults.style.display = visibleCount === 0 ? "block" : "none";
 }
 
 // INITIALIZATION
 document.addEventListener("DOMContentLoaded", () => {
     renderBooks();
-    // Attach live search listener
     searchInput.addEventListener("keyup", debounce(runSearch, 200));
 });

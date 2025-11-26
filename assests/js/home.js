@@ -4,28 +4,70 @@ const books = [
         author: "Donna Tartt",
         genre: "Mystery",
         img: "assests/images/thesecrethistory.webp",
-        description: "A chilling academic mystery set in an elite classics program. This book explores themes of morality, responsibility, and the nature of beauty in a dark, atmospheric setting. The tightly-knit group of classics students forms a dangerous pact that changes their lives forever."
+        description: "A chilling academic mystery set in an elite classics program. A tightly-knit group of students commits a shocking act, exploring themes of morality, beauty, and the consequences of obsession."
     },
     { 
         title: "The Secret Garden",
         author: "Frances Hodgson Burnett",
         genre: "Fantasy",
         img: "assests/images/thesecretgarden.webp",
-        description: "A tale of renewal, nature, and unexpected friendship. It follows a young, spoiled girl sent to live in a large house in the English countryside, where she discovers a forgotten garden and begins a journey of healing and growth with her new friends."
+        description: "A young orphaned girl discovers a hidden garden and, with newfound friends, brings it back to life. A tale of growth, healing, and the magic of nature."
+    },
+    { 
+        title: "1984",
+        author: "George Orwell",
+        genre: "Dystopian",
+        img: "assests/images/1984.webp",
+        description: "A gripping dystopian novel depicting a totalitarian regime that monitors and controls every aspect of life. Themes of surveillance, freedom, and truth are explored in chilling detail."
+    },
+    { 
+        title: "A Little Life",
+        author: "Hanya Yanagihara",
+        genre: "Drama",
+        img: "assests/images/a_little_life.webp",
+        description: "A profound and heart-wrenching story of friendship, trauma, and the enduring power of love, following four friends living in New York City."
+    },
+    { 
+        title: "A Thousand Splendid Suns",
+        author: "Khaled Hosseini",
+        genre: "Historical Fiction",
+        img: "assests/images/a_thousand_splendid_suns.webp",
+        description: "The story of two Afghan women brought together by war and fate. A moving exploration of love, sacrifice, and resilience under oppression."
     },
     { 
         title: "If We Were Villains",
         author: "M.L. Rio",
         genre: "Drama",
         img: "assests/images/ifwewerevillans.webp",
-        description: "A Shakespeare-filled tragedy inside an elite arts conservatory. Focusing on seven actors studying Shakespeare, the lines between their on-stage performances and off-stage rivalries blur, leading to a decade-old mystery of a death that must be solved."
+        description: "A Shakespeare-themed thriller set in an elite arts conservatory. Friendships, rivalries, and secrets collide, leading to a mysterious death."
     },
     { 
         title: "Bunny",
         author: "Mona Awad",
         genre: "Dark Academia",
         img: "assests/images/bunny.webp",
-        description: "A surreal dark-academia satire about belonging and madness. The story follows a lonely graduate student who is drawn into a group of cliquish, highly co-dependent female writers known only as the 'Bunnies,' leading to darkly comedic and bizarre events."
+        description: "A surreal dark-academia tale about a lonely graduate student drawn into a bizarre, co-dependent clique of female writers called the 'Bunnies.'"
+    },
+    { 
+        title: "The Bell Jar",
+        author: "Sylvia Plath",
+        genre: "Classic",
+        img: "assests/images/the_bell_jar.webp",
+        description: "A semi-autobiographical novel exploring a young woman's mental health struggles in 1950s America. Themes of identity, depression, and societal expectations are central."
+    },
+    { 
+        title: "The Picture of Dorian Gray",
+        author: "Oscar Wilde",
+        genre: "Classic",
+        img: "assests/images/the_picture_of_dorian_gray.webp",
+        description: "A cautionary tale about vanity, moral corruption, and the pursuit of pleasure, following a young man whose portrait ages while he remains youthful."
+    },
+    { 
+        title: "To Kill a Mockingbird",
+        author: "Harper Lee",
+        genre: "Classic",
+        img: "assests/images/to_kill_a_mockingbird.webp",
+        description: "A powerful story addressing racial injustice and moral growth through the eyes of Scout Finch in 1930s Alabama. Themes of empathy and integrity prevail."
     },
 ];
 
@@ -35,10 +77,8 @@ function renderFeaturedBooks() {
     featuredContainer.innerHTML = "";
 
     books.forEach((book, index) => {
-        // Unique ID needed for the Bootstrap Collapse component (Read More toggle)
         const collapseId = `descriptionCollapse${index}`;
         
-        // 1. FIX: Use Bootstrap column/card structure for proper rendering
         featuredContainer.innerHTML += `
             <div class="col">
                 <div class="card h-100">
@@ -49,9 +89,7 @@ function renderFeaturedBooks() {
                         <p class="card-text text-muted"><strong>Author:</strong> ${book.author}</p>
                         
                         <div class="collapse" id="${collapseId}">
-                            <p class="card-text">
-                                ${book.description}
-                            </p>
+                            <p class="card-text">${book.description}</p>
                         </div>
                         <a 
                             class="btn btn-sm btn-outline-primary" 
@@ -72,6 +110,3 @@ function renderFeaturedBooks() {
 }
 
 renderFeaturedBooks();
-
-// No need for a separate CSS file for the basic Bootstrap card styling now, 
-// but you might still use your home.css for the hero section and font styling.
