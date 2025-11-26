@@ -13,7 +13,7 @@ const books = [
         title: "The Secret Garden",
         author: "Frances Hodgson Burnett",
         genre: "Fantasy",
-        img: "assests/images/thesecretgarden.webp",
+        img: "assests/images/the secretgarden.webp",
         description: "A fantasy adventure where stories come alive from the book itself."
     },
     { 
@@ -33,14 +33,6 @@ const books = [
         description: "A surreal satire blooming under the pressure of academic writing."
     },
     { 
-        id: "978-0141439518",
-        title: "Pride and Prejudice", 
-        author: "Jane Austen", 
-        genre: "Romance", 
-        img: "assests/images/prideandprejudice.webp", 
-        description: "A classic novel exploring societal norms and love in 19th-century England." 
-    },
-    { 
         id: "978-0451524935",
         title: "1984", 
         author: "George Orwell", 
@@ -48,7 +40,65 @@ const books = [
         img: "assests/images/1984.webp", 
         description: "A chilling look at a future totalitarian state and surveillance society." 
     },
+    { 
+        id: "978-0316055447",
+        title: "A Little Life",
+        author: "Hanya Yanagihara",
+        genre: "Drama",
+        img: "assests/images/a little life.webp",
+        description: "A heart-wrenching story of friendship, trauma, and the enduring power of love."
+    },
+    { 
+        id: "978-1594631931",
+        title: "A Thousand Splendid Suns",
+        author: "Khaled Hosseini",
+        genre: "Historical Fiction",
+        img: "assests/images/a thousand splendid suns.webp",
+        description: "The story of two Afghan women bound together by war and fate, exploring love, sacrifice, and resilience."
+    },
+    { 
+        id: "978-0140237504",
+        title: "The Bell Jar",
+        author: "Sylvia Plath",
+        genre: "Classic",
+        img: "assests/images/the bell jar.webp",
+        description: "A semi-autobiographical novel exploring a young woman's mental health struggles in 1950s America."
+    },
+    { 
+        id: "978-0141439570",
+        title: "The Picture of Dorian Gray",
+        author: "Oscar Wilde",
+        genre: "Classic",
+        img: "assests/images/the picture of dorian gray.webp",
+        description: "A cautionary tale about vanity, moral corruption, and the pursuit of pleasure."
+    },
+    { 
+        id: "978-0061120084",
+        title: "To Kill a Mockingbird",
+        author: "Harper Lee",
+        genre: "Classic",
+        img: "assests/images/to kill a mockingbird.webp",
+        description: "A story addressing racial injustice and moral growth through the eyes of Scout Finch in 1930s Alabama."
+    },
+    // ✅ Added new books
+    { 
+        id: "978-0143039583",
+        title: "All the Lovers in the Night",
+        author: "Mieko Kawakami",
+        genre: "Fantasy",
+        img: "assests/images/all the lovers in the night.webp",
+        description: "A young orphaned girl discovers a hidden garden and, with newfound friends, brings it back to life. A tale of growth, healing, and the magic of nature."
+    },
+    { 
+        id: "978-0316769488",
+        title: "The Catcher in the Rye",
+        author: "J.D. Salinger",
+        genre: "Classic",
+        img: "assests/images/the catcher in the rye.webp",
+        description: "A story following Holden Caulfield, a teenager navigating the challenges of adolescence and alienation in 1950s New York."
+    }
 ];
+
 
 // DOM ELEMENTS
 const container = document.getElementById("catalogBooks");
@@ -79,7 +129,7 @@ function renderBooks() {
                         
                         <p class="card-text text-muted mb-3"><strong>Author:</strong> ${book.author}</p>
                         
-                        <a href="details.html?id=${book.id}" class="btn btn-primary mt-auto">View Details & Borrow</a>
+                        <a href="details.html?id=${book.id}" class="btn btn-primary mt-auto">Borrow</a>
                     </div>
                 </div>
             </div>
@@ -105,8 +155,7 @@ function debounce(func, delay) {
     };
 }
 
-
-// LIVE SEARCH/FILTER FUNCTION (Student 2 Task)
+// LIVE SEARCH/FILTER FUNCTION
 function runSearch() {
     const text = searchInput.value.toLowerCase();
     let visibleCount = 0;
@@ -122,7 +171,6 @@ function runSearch() {
             genre.includes(text);
 
         if (match) {
-            // Displaying the column container
             card.style.display = "block"; 
             visibleCount++;
         } else {
@@ -131,13 +179,11 @@ function runSearch() {
     });
 
     // Show/Hide "No Results"
-    noResults.style.display =
-        visibleCount === 0 ? "block" : "none";
+    noResults.style.display = visibleCount === 0 ? "block" : "none";
 }
 
 // INITIALIZATION
 document.addEventListener("DOMContentLoaded", () => {
     renderBooks();
-    // Attach live search listener
     searchInput.addEventListener("keyup", debounce(runSearch, 200));
 });
