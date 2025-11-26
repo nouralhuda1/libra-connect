@@ -1,82 +1,102 @@
-// BOOKS ARRAY (with images + descriptions)
+// BOOKS ARRAY
 const books = [
     { 
-        title: "The secret history",
-        author: "Lina Al-Farsi",
+        id: "978-0679724330", 
+        title: "The Secret History",
+        author: "Donna Tartt", 
         genre: "Mystery",
         img: "assests/images/thesecrethistory.webp",
         description: "A gripping mystery that unfolds inside an abandoned library."
     },
     { 
-        title: "the secret garden",
-        author: "Omar El-Madani",
+        id: "978-0064401883",
+        title: "The Secret Garden",
+        author: "Frances Hodgson Burnett",
         genre: "Fantasy",
         img: "assests/images/thesecretgarden.webp",
         description: "A fantasy adventure where stories come alive from the book itself."
     },
     { 
-        title: "if we were villaness",
-        author: "Sara Al-Taher",
-        genre: "Drama",
+        id: "978-1250207519",
+        title: "If We Were Villains",
+        author: "M. L. Rio",
+        genre: "Dark Academia / Drama",
         img: "assests/images/ifwewerevillans.webp",
-        description: "A dramatic tale of love and loss set in the Sahara."
+        description: "A dramatic tale of love and loss set in a prestigious arts conservatory."
     },
     { 
-        title: "bunny",
-        author: "Nour Al-Sadiq",
-        genre: "Romance",
+        id: "978-0735235371",
+        title: "Bunny",
+        author: "Mona Awad",
+        genre: "Dark Academia / Romance",
         img: "assests/images/bunny.webp",
-        description: "A bittersweet romance blooming under the Libyan night sky."
+        description: "A surreal satire blooming under the pressure of academic writing."
+    },
+    { 
+        id: "978-0141439518",
+        title: "Pride and Prejudice", 
+        author: "Jane Austen", 
+        genre: "Romance", 
+        img: "assests/images/prideandprejudice.webp", 
+        description: "A classic novel exploring societal norms and love in 19th-century England." 
+    },
+    { 
+        id: "978-0451524935",
+        title: "1984", 
+        author: "George Orwell", 
+        genre: "Dystopian", 
+        img: "assests/images/1984.webp", 
+        description: "A chilling look at a future totalitarian state and surveillance society." 
     },
 ];
 
 // DOM ELEMENTS
 const container = document.getElementById("catalogBooks");
 const searchInput = document.getElementById("searchInput");
+const noResults = document.getElementById("noResults"); 
 
-// RENDER BOOK CARDS
+// RENDER BOOK CARDS (Uses Bootstrap card structure)
 function renderBooks() {
     container.innerHTML = "";
+    let htmlContent = '';
 
     books.forEach(book => {
-        container.innerHTML += `
-            <div class="book-card fade-in" 
-                 data-title="${book.title.toLowerCase()}"
-                 data-author="${book.author.toLowerCase()}"
-                 data-genre="${book.genre.toLowerCase()}">
-
-                <div class="card p-3 shadow-sm h-100 w-100">
-                    <img src="${book.img}" class="book-cover mb-3" alt="${book.title}">
-                    <h4>${book.title}</h4>
-
-                    <p class="text-muted mb-1"><strong>Author:</strong> ${book.author}</p>
-                    <p class="mb-1"><strong>Genre:</strong> ${book.genre}</p>
-                    <p class="book-description">${book.description}</p>
+        htmlContent += `
+            <div class="col book-card fade-in" 
+                data-title="${book.title.toLowerCase()}" 
+                data-author="${book.author.toLowerCase()}" 
+                data-genre="${book.genre.toLowerCase()}"
+                data-id="${book.id}"
+            >
+                <div class="card h-100 shadow-sm text-center">
+                    
+                    <span class="badge bg-secondary genre-badge">${book.genre}</span> 
+                    
+                    <img src="${book.img}" class="card-img-top book-cover" alt="${book.title}">
+                    
+                    <div class="card-body">
+                        <h5 class="card-title">${book.title}</h5>
+                        
+                        <p class="card-text text-muted mb-3"><strong>Author:</strong> ${book.author}</p>
+                        
+                        <a href="details.html?id=${book.id}" class="btn btn-primary mt-auto">View Details & Borrow</a>
+                    </div>
                 </div>
             </div>
         `;
     });
+    
+    container.innerHTML = htmlContent;
 
-    addNoResultsBox();
+    // Check if search input has content and re-run filter if needed
+    if (searchInput.value) {
+        runSearch();
+    } else {
+        noResults.style.display = books.length === 0 ? "block" : "none";
+    }
 }
 
-renderBooks();
-
-
-// ADD "NO RESULTS" MESSAGE BOX
-function addNoResultsBox() {
-    const noBox = document.createElement("p");
-    noBox.id = "noResults";
-    noBox.textContent = "No books found.";
-    noBox.style.display = "none";
-    noBox.style.textAlign = "center";
-    noBox.style.marginTop = "20px";
-    noBox.style.fontSize = "18px";
-    container.appendChild(noBox);
-}
-
-
-// DEBOUNCE FUNCTION (smoother typing)
+// DEBOUNCE FUNCTION
 function debounce(func, delay) {
     let timer;
     return function () {
@@ -86,7 +106,7 @@ function debounce(func, delay) {
 }
 
 
-// LIVE SEARCH (title + author + genre)
+// LIVE SEARCH/FILTER FUNCTION (Student 2 Task)
 function runSearch() {
     const text = searchInput.value.toLowerCase();
     let visibleCount = 0;
@@ -102,7 +122,8 @@ function runSearch() {
             genre.includes(text);
 
         if (match) {
-            card.style.display = "block";
+            // Displaying the column container
+            card.style.display = "block"; 
             visibleCount++;
         } else {
             card.style.display = "none";
@@ -110,11 +131,13 @@ function runSearch() {
     });
 
     // Show/Hide "No Results"
-    document.getElementById("noResults").style.display =
+    noResults.style.display =
         visibleCount === 0 ? "block" : "none";
 }
 
-searchInput.addEventListener("keyup", debounce(runSearch, 200));
-
-
-                                                                                                                                                                                                                                                                                                                                                                                               
+// INITIALIZATION
+document.addEventListener("DOMContentLoaded", () => {
+    renderBooks();
+    // Attach live search listener
+    searchInput.addEventListener("keyup", debounce(runSearch, 200));
+});
