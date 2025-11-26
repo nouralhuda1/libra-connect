@@ -165,8 +165,8 @@ document.addEventListener('DOMContentLoaded', function() {
         if (isValid) {
             // In a real application, you would send this data to a server
             // For this demo, we'll just show a success message and redirect
-            alert('Registration successful! You will now be redirected to the login page.');
-            window.location.href = 'login.html';
+            alert('Registration successful! You will now be redirected to the dashboard page.');
+            window.location.href = 'index.html';
         } else {
             // Show error message if validation fails
             alert('Please fix the errors in the form before submitting.');

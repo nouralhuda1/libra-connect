@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const loginCaptchaQuestion = document.getElementById('loginCaptchaQuestion');
     const loginRefreshCaptchaBtn = document.getElementById('loginRefreshCaptcha');
     
+
+    //stores the correct answer to the captcha question 
     let loginCaptchaAnswer = 0;
     
     // Generate a simple math captcha
@@ -14,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
         loginCaptchaQuestion.textContent = `${num1} + ${num2} = ?`;
     }
     
-    // Initialize captcha
+    // Initialize captcha run the captcha function immediatly when the page loads
     generateLoginCaptcha();
     
     // Refresh captcha
@@ -26,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return emailRegex.test(email);
     }
     
-    // Captcha validation
+    // Captcha validation parseInt() converts text input to number for comparison
     function validateCaptcha(answer) {
         return parseInt(answer) === loginCaptchaAnswer;
     }
