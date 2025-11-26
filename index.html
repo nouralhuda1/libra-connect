@@ -5,51 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>LibraConnect – Home</title>
 
-    <!-- Custom CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assests/css/home.css">
     <link rel="stylesheet" href="assests/css/includes.css">
 </head>
 <body>
 
-    <!-- NAVBAR -->
     <div id="menu"></div>
 
-    <!-- HERO SECTION -->
     <section class="hero">
         <div class="hero-overlay">
-            <h1>Explore the Library of the Night</h1>
-            <p>Discover your next favorite story under the glow of neon lights</p>
+            <h1>Explore LibraConnect Library</h1>
             <a href="catalog.html" class="hero-button">Explore Catalog</a>
         </div>
-        <!-- Dark Mode Toggle -->
-        <button id="darkModeToggle" class="dark-mode-toggle">🌙</button>
     </section>
 
-    <!-- MAIN CONTENT -->
     <div class="container">
         <h2 class="title">Featured Books</h2>
-        <div id="featuredBooks" class="book-grid"></div>
+        <div id="featuredBooks" class="row row-cols-1 row-cols-md-3 g-4"></div>
     </div>
 
-    <!-- FOOTER -->
     <div id="footer"></div>
 
-    <!-- Load shared components -->
     <script>
+        // Navbar
         fetch("includes/menu.html")
             .then(res => res.text())
             .then(data => document.getElementById("menu").innerHTML = data);
 
-        fetch("includes/header.html")
-            .then(res => res.text())
-            .then(data => document.getElementById("header").innerHTML = data);
-
+        // Footer
         fetch("includes/footer.html")
             .then(res => res.text())
             .then(data => document.getElementById("footer").innerHTML = data);
     </script>
 
-    <!-- JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    
     <script src="assests/js/home.js"></script>
     <script src="assests/js/darkmode.js"></script>
 

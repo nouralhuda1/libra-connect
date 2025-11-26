@@ -1,171 +1,158 @@
-/* --- HERO SECTION --- */
+/* --- GLOBAL RESETS & TYPOGRAPHY --- */
+body {
+    background-color: #f8f9fa; /* Very light gray/off-white background */
+    font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif; /* Clean, modern font */
+    color: #333; /* Dark gray text */
+    margin: 0;
+    padding: 0;
+}
+
+/* ------------------------------------------- */
+/* --- HERO SECTION (No change needed) --- */
+/* ------------------------------------------- */
+
 .hero {
     position: relative;
     width: 100%;
-    height: 60vh;
-    background: linear-gradient(135deg, #0b0c1c, #1a1c2c);
+    height: auto; 
+    padding: 50px 20px; 
+    background: white; 
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #fff;
     text-align: center;
     overflow: hidden;
+    border-bottom: 1px solid #eee; 
+}
+
+.hero-overlay {
+    max-width: 920px;
+    padding: 0 20px;
 }
 
 .hero-overlay h1 {
-    font-size: 3rem;
-    margin-bottom: 10px;
-    color: #fffbf2;
-    text-shadow: 0 0 12px #0ff, 0 0 18px #0ff;
+    font-size: 2.5em; 
+    font-weight: 700;
+    margin-bottom: 20px; 
+    color: #343a40; 
 }
 
 .hero-overlay p {
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-    color: #c0fefe;
-    text-shadow: 0 0 8px #0ff;
+    display: none; 
 }
 
 .hero-button {
-    padding: 12px 28px;
-    background: #0ff;
-    color: #1a1a1a;
-    font-weight: bold;
-    border-radius: 25px;
+    padding: 12px 30px; 
+    background: #007bff; 
+    color: #fff;
+    font-weight: 600; 
+    border-radius: 5px; 
     text-decoration: none;
-    transition: 0.3s;
+    transition: background 0.25s ease, transform 0.15s ease, box-shadow 0.25s ease;
+    display: inline-block;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
 }
 
 .hero-button:hover {
-    background: #0cc;
-    color: #fff;
+    background: #0056b3; 
+    transform: translateY(0); 
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
 
-/* Dark Mode Toggle */
-.dark-mode-toggle {
-    position: absolute;
-    top: 20px;
-    right: 25px;
-    font-size: 1.5rem;
-    background: transparent;
-    border: none;
-    color: #fff;
-    cursor: pointer;
-    transition: transform 0.3s;
-}
+/* ------------------------------------------- */
+/* --- CONTAINER & TITLE (No change needed) --- */
+/* ------------------------------------------- */
 
-.dark-mode-toggle:hover {
-    transform: scale(1.2);
-}
-
-/* --- CONTAINER & GRID --- */
 .container {
-    width: 90%;
+    max-width: 1200px;
     margin: 40px auto;
+    padding: 0 20px;
+    box-sizing: border-box;
 }
 
 .title {
-    font-size: 28px;
-    font-weight: 700;
+    font-size: 1.8em; 
+    font-weight: 600;
     margin-bottom: 25px;
-    color: #e0e0e0;
-    letter-spacing: 1px;
+    color: #343a40;
+    letter-spacing: normal;
     text-align: left;
 }
 
-.book-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 25px;
+/* -------------------------------------------------------------------- */
+/* --- FIX: STYLING BOOTSTRAP CARDS (Replaces .book-card and .book-grid) --- */
+/* -------------------------------------------------------------------- */
+
+/* Ensure the row has standard spacing if needed, though 'g-4' handles grid spacing */
+.row {
+    padding-bottom: 40px;
 }
 
-/* --- BOOK CARD --- */
-.book-card {
-    position: relative;
-    background: #1b1b2f;
-    border-radius: 12px;
-    overflow: hidden;
+/* Base card styling (Bootstrap .card class) */
+.card {
+    /* Remove default Bootstrap border and shadow for a cleaner look */
+    border: none;
+    box-shadow: none;
     cursor: pointer;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    text-align: center;
+    transition: transform 0.2s ease;
+    background: transparent; /* Ensure card background is invisible */
 }
 
-.book-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 8px 18px rgba(0,0,0,0.6);
+/* Subtle lift on hover */
+.card:hover {
+    transform: translateY(-5px); 
 }
 
-.book-card img {
+/* Styling the image (Bootstrap .card-img-top class) */
+.card-img-top {
     width: 100%;
-    height: 230px;
+    height: auto;
     object-fit: cover;
     display: block;
+    border-radius: 4px; 
+    /* Subtle shadow only on the image for the dominant element */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); 
 }
 
+/* Styling the title (Bootstrap .card-title class) */
+.card-title {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #343a40; /* Dark text */
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+/* Genre badge (Bootstrap .badge class) */
 .genre-badge {
+    /* Reposition badge since Bootstrap badges are inline by default */
     position: absolute;
     top: 10px;
     left: 10px;
-    background: #0ff;
-    color: #1a1a1a;
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-size: 12px;
-    opacity: 0.9;
+    /* Use Bootstrap utility class text-bg-secondary in JS/HTML for color (gray) */
+    padding: 3px 8px; 
+    border-radius: 3px;
+    font-size: 0.75em;
+    font-weight: 700;
+    z-index: 10;
 }
 
-.book-title {
-    font-size: 17px;
-    padding: 12px;
-    text-align: center;
+/* Styling the 'Read More' button for a slight margin */
+.card-body .btn {
+    margin-top: 10px;
+}
+
+/* Styling the collapsed description text for better readability */
+.card-body .collapse p {
+    font-size: 0.9em;
+    color: #6c757d; /* Lighter gray text */
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+/* Hide the default description text in card-text that holds the author */
+.card-text strong {
     font-weight: 600;
-    color: #fff;
-    background: #2a2a3c;
+    color: #343a40;
 }
-
-/* HOVER INFO */
-.book-info {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 0;
-    overflow: hidden;
-
-    background: rgba(0, 0, 0, 0.85);
-    color: #fff;
-
-    transition: height 0.35s ease;
-    padding: 0 12px;
-}
-
-.book-card:hover .book-info {
-    height: 55%;
-    padding-top: 15px;
-}
-
-.book-info p {
-    font-size: 14px;
-    margin: 3px 0;
-    opacity: 0.9;
-}
-
-/* --- DARK MODE STYLING --- */
-body.dark-mode {
-    background: #0a0a14;
-    color: #e0e0e0;
-}
-
-body.dark-mode .hero {
-    background: linear-gradient(135deg, #05050d, #0f0f1f);
-}
-
-body.dark-mode .book-card {
-    background: #11112a;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-}
-
-body.dark-mode .book-title {
-    background: #1c1c33;
-}
-
