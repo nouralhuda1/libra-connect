@@ -129,7 +129,7 @@ function renderBooks() {
                         
                         <p class="card-text text-muted mb-3"><strong>Author:</strong> ${book.author}</p>
                         
-                        <a href="details.html?id=${book.id}" class="btn btn-primary mt-auto">Borrow</a>
+                        <a href="borrow.html?id=${book.id}" class="btn btn-primary mt-auto">Borrow</a>
                     </div>
                 </div>
             </div>
